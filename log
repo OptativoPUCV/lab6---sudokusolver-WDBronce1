@@ -62,3 +62,45 @@ sudoku.c:8:8: note: while referencing ‘sudo’
 cc1: all warnings being treated as errors
 Compilation failed
 fad5f6b
+Fri 17 May 2024 10:34:48 PM UTC: 
+ sudoku.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+test.c: In function ‘test_isvalid’:
+test.c:112:9: error: too few arguments to function ‘is_valid’
+  112 |     if(!is_valid(initial)){
+      |         ^~~~~~~~
+In file included from test.c:5:
+sudoku.c:63:5: note: declared here
+   63 | int is_valid(Node* n, int x, int y)
+      |     ^~~~~~~~
+test.c:120:8: error: too few arguments to function ‘is_valid’
+  120 |     if(is_valid(initial)){
+      |        ^~~~~~~~
+In file included from test.c:5:
+sudoku.c:63:5: note: declared here
+   63 | int is_valid(Node* n, int x, int y)
+      |     ^~~~~~~~
+test.c:131:8: error: too few arguments to function ‘is_valid’
+  131 |     if(is_valid(initial)){
+      |        ^~~~~~~~
+In file included from test.c:5:
+sudoku.c:63:5: note: declared here
+   63 | int is_valid(Node* n, int x, int y)
+      |     ^~~~~~~~
+test.c:141:8: error: too few arguments to function ‘is_valid’
+  141 |     if(is_valid(initial)){
+      |        ^~~~~~~~
+In file included from test.c:5:
+sudoku.c:63:5: note: declared here
+   63 | int is_valid(Node* n, int x, int y)
+      |     ^~~~~~~~
+test.c: In function ‘test_dfs’:
+test.c:213:9: error: too few arguments to function ‘is_valid’
+  213 |     if(!is_valid(final)){
+      |         ^~~~~~~~
+In file included from test.c:5:
+sudoku.c:63:5: note: declared here
+   63 | int is_valid(Node* n, int x, int y)
+      |     ^~~~~~~~
+Compilation failed
+ec16d93

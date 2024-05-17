@@ -60,7 +60,7 @@ No se repitan números en las columnas
 No se repitan números en las submatrices de 3x3
 Si el estado es válido la función retorna 1, si no lo es retorna 0.
 */
-int is_valid(Node* n)
+int is_valid(Node* n, int x, int y)
 {
    return 1;
 }
@@ -70,9 +70,9 @@ List* get_adj_nodes(Node* n)
 {
    List* list=createList();
    int k,j;
-   for(k = 0 ; k<9 ; k++)
+   for(k = 1 ; k < 9 ; k++)
    {   
-      for(j = 0 ; j<9 ; j++)
+      for(j = 1 ; j < 9 ; j++)
       {
          if (n->sudo[k][j] == 0)
          {
@@ -80,12 +80,12 @@ List* get_adj_nodes(Node* n)
          }
       }
    }
-   for(int i = 0 ; i<9 ; i++)
+   for(int i = 1 ; i < 9 ; i++)
    {
       Node *New = createNode();
       New = copy(n);
       New->sudo[k][j] = i;
-      if(is_valid(n) == 1)
+      if(is_valid(n, k, j) == 1)
       {
          pushBack(list, copy(New));
       }
