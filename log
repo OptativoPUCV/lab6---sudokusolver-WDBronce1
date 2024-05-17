@@ -34,3 +34,17 @@ sudoku.c:8:8: note: while referencing ‘sudo’
 cc1: all warnings being treated as errors
 Compilation failed
 e9a2293
+Fri 17 May 2024 10:28:31 PM UTC: 
+ sudoku.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘get_adj_nodes’:
+sudoku.c:86:16: error: array subscript 9 is above array bounds of ‘int[9][9]’ [-Werror=array-bounds]
+   86 |       New->sudo[k][j] = i;
+      |       ~~~~~~~~~^~~
+sudoku.c:8:8: note: while referencing ‘sudo’
+    8 |    int sudo[9][9];
+      |        ^~~~
+cc1: all warnings being treated as errors
+Compilation failed
+987b1ea

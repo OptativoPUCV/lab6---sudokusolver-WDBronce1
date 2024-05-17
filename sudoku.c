@@ -62,9 +62,6 @@ Si el estado es válido la función retorna 1, si no lo es retorna 0.
 */
 int is_valid(Node* n)
 {
-   
-   
-   
    return 1;
 }
 
@@ -85,11 +82,9 @@ List* get_adj_nodes(Node* n)
    }
    for(int i = 0 ; i<9 ; i++)
    {
-      
-      Node *New = createNode();
-      New = copy(n);
+      Node *New = copy(n);
       New->sudo[k][j] = i;
-      if(is_valid(n) )
+      if(is_valid(n)  == 1)
       {
          pushBack(list, copy(New));
       }
@@ -98,8 +93,7 @@ List* get_adj_nodes(Node* n)
          free(New);
       }
    }
-   
-   
+
    return list;
 }
 
