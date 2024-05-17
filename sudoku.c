@@ -82,9 +82,10 @@ List* get_adj_nodes(Node* n)
    }
    for(int i = 0 ; i<9 ; i++)
    {
-      Node *New = copy(n);
+      Node *New = createNode();
+      New = copy(n);
       New->sudo[k][j] = i;
-      if(is_valid(n)  == 1)
+      if(is_valid(n) == 1)
       {
          pushBack(list, copy(New));
       }
@@ -93,7 +94,7 @@ List* get_adj_nodes(Node* n)
          free(New);
       }
    }
-
+   
    return list;
 }
 
