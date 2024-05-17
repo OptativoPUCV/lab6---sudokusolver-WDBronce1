@@ -124,3 +124,14 @@ Fri 17 May 2024 10:35:52 PM UTC:
  tests:  0|5
 total_score: 0/70
 0722a4c
+Fri 17 May 2024 11:29:23 PM UTC: 
+ sudoku.c | 36 ++++++++++++++++++++++++++++++++++--
+ 1 file changed, 34 insertions(+), 2 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘is_valid’:
+sudoku.c:83:29: error: ‘num’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+   83 |             int i = 3 * (num/3) + (k/3);
+      |                         ~~~~^~~
+cc1: all warnings being treated as errors
+Compilation failed
+8468d35

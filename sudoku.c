@@ -61,11 +61,43 @@ No se repitan números en las submatrices de 3x3
 Si el estado es válido la función retorna 1, si no lo es retorna 0.
 */
 int is_valid(Node* n)
-{
+{  
+   int num;
+   for (int x = 0 ; x < 8 ; x++)
+   {
+      for (int y = 0 ; y < 8 ; y++)
+      {
+         if (n->sudo[x][y] != 0)
+         {
+            num = n->sudo[x][y];
+         }
+         for (int i = 0 ; i < 8 ; i++)
+         {
+            if (n->sudo[x][i] == num)
+            {
+               return 0;
+            }
+         }
+         for (int k = 0 ; k < 9 ; k++)
+         {
+            int i = 3 * (num/3) + (k/3);
+            int j = 3 * (num%3) + (k%3);
+            if (n->sudo[i][j] == num)
+            {
+               return 0;
+            }
+            
+         }
+      }
+   }
+   
+   
+   
    return 1;
 }
 
 //1.Cree una función que a partir de un nodo genere una lista con los nodos adyacentes
+//3.Modifique la función get_adj_nodes para que sólo los nodos válidos sean retornados (use la función is_valid).
 List* get_adj_nodes(Node* n)
 {
    List* list=createList();
@@ -85,7 +117,7 @@ List* get_adj_nodes(Node* n)
       Node *New = createNode();
       New = copy(n);
       New->sudo[k][j] = i;
-      if(is_valid(n) == 1)
+      if(is_valid(New) == 1)
       {
          pushBack(list, copy(New));
       }
@@ -98,7 +130,7 @@ List* get_adj_nodes(Node* n)
    return list;
 }
 
-
+//4.Implemente la función int is_final(Node * n). Esta función retorna 1 si el nodo corresponde a un nodo final (es decir, todos los valores de la matriz son distintos a 0) y 0 en caso contrario.
 int is_final(Node* n)
 {
     return 0;
