@@ -71,6 +71,10 @@ int is_valid(Node* n)
          {
             num = n->sudo[x][y];
          }
+         else
+         {
+            continue;
+         }
          for (int i = 0 ; i < 8 ; i++)
          {
             if (n->sudo[x][i] == num)
@@ -86,7 +90,6 @@ int is_valid(Node* n)
             {
                return 0;
             }
-            
          }
       }
    }

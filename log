@@ -135,3 +135,9 @@ sudoku.c:83:29: error: ‘num’ may be used uninitialized in this function [-We
 cc1: all warnings being treated as errors
 Compilation failed
 8468d35
+Fri 17 May 2024 11:32:52 PM UTC: 
+ sudoku.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+ tests:  0|5
+total_score: 0/70
+7f6263d
