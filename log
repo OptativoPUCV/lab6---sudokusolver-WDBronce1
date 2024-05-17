@@ -104,3 +104,17 @@ sudoku.c:63:5: note: declared here
       |     ^~~~~~~~
 Compilation failed
 ec16d93
+Fri 17 May 2024 10:35:34 PM UTC: 
+ sudoku.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘get_adj_nodes’:
+sudoku.c:87:16: error: array subscript 9 is above array bounds of ‘int[9][9]’ [-Werror=array-bounds]
+   87 |       New->sudo[k][j] = i;
+      |       ~~~~~~~~~^~~
+sudoku.c:8:8: note: while referencing ‘sudo’
+    8 |    int sudo[9][9];
+      |        ^~~~
+cc1: all warnings being treated as errors
+Compilation failed
+ffb2e20
