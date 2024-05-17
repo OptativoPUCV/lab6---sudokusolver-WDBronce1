@@ -2,3 +2,21 @@ Thu 16 May 2024 10:02:54 PM UTC:
  tests:  0|5
 total_score: 0/70
 b055f6d
+Fri 17 May 2024 10:12:04 PM UTC: 
+ sudoku.c | 77 +++++++++++++++++++++++++++++++++++++++++++++++++++++-----------
+ 1 file changed, 64 insertions(+), 13 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘is_valid’:
+sudoku.c:65:10: error: unused variable ‘aux’ [-Werror=unused-variable]
+   65 |    Node *aux = copy(n);
+      |          ^~~
+sudoku.c: In function ‘get_adj_nodes’:
+sudoku.c:91:16: error: array subscript 9 is above array bounds of ‘int[9][9]’ [-Werror=array-bounds]
+   91 |       New->sudo[k][j] = i;
+      |       ~~~~~~~~~^~~
+sudoku.c:8:8: note: while referencing ‘sudo’
+    8 |    int sudo[9][9];
+      |        ^~~~
+cc1: all warnings being treated as errors
+Compilation failed
+964aa89
