@@ -62,7 +62,7 @@ Si el estado es válido la función retorna 1, si no lo es retorna 0.
 */
 int is_valid(Node* n)
 {
-   Node *aux = copy(n);
+   
    
    
    return 1;
