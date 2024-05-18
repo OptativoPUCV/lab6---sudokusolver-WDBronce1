@@ -60,65 +60,10 @@ No se repitan números en las columnas
 No se repitan números en las submatrices de 3x3
 Si el estado es válido la función retorna 1, si no lo es retorna 0.
 */
-int is_valid(Node *n) {
-  int nRep[10];
-  int i, j, k, a, b;
-
-  // Inicializar nRep[a] -> 0
-  for (a = 0; a < 10; a++)
-    nRep[a] = 0;
-
-  // Validar filas
-  for (i = 0; i < 9; i++) {
-    for (j = 0; j < 9; j++) {
-      nRep[n->sudo[i][j]]++;
-    }
-
-    for (k = 1; k < 10; k++) {
-      if (nRep[k] > 1)
-        return 0;
-    }
-
-    for (a = 0; a < 10; a++) {
-      nRep[a] = 0;
-    }
-  }
-
-  // Validar columnas
-  for (i = 0; i < 9; i++) {
-    for (j = 0; j < 9; j++) {
-      nRep[n->sudo[j][i]]++; // lol
-    }
-
-    for (k = 1; k < 10; k++) {
-      if (nRep[k] > 1)
-        return 0;
-    }
-
-    for (a = 0; a < 10; a++) {
-      nRep[a] = 0;
-    }
-  }
-
-  for (k = 0; k < 9; k++) {
-    for (b = 0; b < 9; b++) {
-      i = 3 * (k / 3) + (b / 3);
-      j = 3 * (k % 3) + (b % 3);
-      nRep[n->sudo[i][j]]++;
-    }
-
-    for (i = 1; i < 10; i++) {
-      if (nRep[i] > 1) {
-        return 0;
-      }
-
-      for (a = 0; a < 10; a++) {
-        nRep[a] = 0;
-      }
-    }
-  }
-
-  return 1;
+int is_valid(Node* n)
+{  
+   
+   return 1;
 }
 
 //1.Cree una función que a partir de un nodo genere una lista con los nodos adyacentes
