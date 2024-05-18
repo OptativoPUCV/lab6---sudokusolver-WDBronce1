@@ -115,6 +115,7 @@ int is_valid(Node* n)
 
 //1.Cree una función que a partir de un nodo genere una lista con los nodos adyacentes
 //3.Modifique la función get_adj_nodes para que sólo los nodos válidos sean retornados (use la función is_valid).
+/*
 List* get_adj_nodes(Node* n)
 {
    List* list = createList();
@@ -142,6 +143,26 @@ List* get_adj_nodes(Node* n)
       }
    }
    return list;
+}*/
+List *get_adj_nodes(Node *n) {
+  List *list = createList();
+  int i, j;
+  for (i = 0; i < 9; i++) {
+    for (j = 0; j < 9; j++) {
+      if (n->sudo[i][j] == 0) {
+        int k;
+        for (k = 1; k < 10; k++) {
+          Node *new = copy(n);
+          new->sudo[i][j] = k;
+          if (is_valid(new))
+            pushBack(list, new);
+        }
+        return list;
+      }
+    }
+  }
+
+  return list;
 }
 
 //4.Implemente la función int is_final(Node * n). Esta función retorna 1 si el nodo corresponde a un nodo final (es decir, todos los valores de la matriz son distintos a 0) y 0 en caso contrario.
