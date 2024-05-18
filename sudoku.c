@@ -63,7 +63,48 @@ Si el estado es válido la función retorna 1, si no lo es retorna 0.
 int is_valid(Node* n)
 {  
    
-   return 1;
+   int i, j, numSub, k;
+     int mapFila[9][9] = {};
+     int mapCol[9][9] = {};
+     // mapa de repeticiones
+     int *submatriz;
+     // recorrer cada submatriz de 3x3 en el sudoku
+
+     for (numSub = 0; numSub < 9; numSub++) // indice de la submatriz.
+     {
+
+       submatriz = calloc(9, sizeof(int)); // memoria dinamica para poder borrar
+                                           // y reinicializar en 0 mas facil.
+       for (k = 0; k < 9; k++)             // numeros del 1 al 9
+       {
+         i = 3 * (numSub / 3) + (k / 3);
+         j = 3 * (numSub % 3) + (k % 3); // indice en la matriz del sudoku
+
+         int dato = n->sudo[i][j];
+         if (dato == 0)
+           continue;
+
+         if (mapFila[i][dato - 1] == 1) // Revisa si se repite en la fila
+           return 0;
+         else
+           mapFila[i][dato - 1] = 1;
+
+         if (mapCol[dato - 1][j] == 1) // revisa si se repite en la columna
+           return 0;
+         else
+           mapCol[dato - 1][j] = 1;
+
+         // Revisar submatriz
+
+         if (submatriz[dato - 1] == 1)
+           return 0;
+         else
+           submatriz[dato - 1] = 1;
+       }
+
+       free(submatriz); // so that it can be used malloc again
+     }
+     return 1;
 }
 
 //1.Cree una función que a partir de un nodo genere una lista con los nodos adyacentes
