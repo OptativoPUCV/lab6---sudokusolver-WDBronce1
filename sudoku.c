@@ -185,7 +185,8 @@ Node* DFS(Node* initial, int* cont)
    push(pila, initial);
    List *Lista = createList();
    *cont = 1;
-   for (Node *aux; top(pila) != NULL; aux = top(pila)) 
+   Node *aux = createNode();
+   for (aux = top(pila) ; top(pila) != NULL; aux = top(pila)) 
    {
       
       cont++;
