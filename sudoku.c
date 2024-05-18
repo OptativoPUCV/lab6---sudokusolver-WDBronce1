@@ -125,24 +125,23 @@ List* get_adj_nodes(Node* n)
       {
          if (n->sudo[k][j] == 0)
          {
-            break;
+             for(int i = 1 ; i < 10 ; i++)
+               {
+                  Node *New = copy(n);
+                  New->sudo[k][j] = i;
+                  if(is_valid(New) == 1)
+                  {
+                     pushBack(list, New);
+                  }
+                  else
+                  {
+                     free(New);
+                  }
+               }
          }
       }
    }
-   for(int i = 1 ; i < 9 ; i++)
-   {
-      Node *New = createNode();
-      New = copy(n);
-      New->sudo[k][j] = i;
-      if(is_valid(New) == 1)
-      {
-         pushBack(list, copy(New));
-      }
-      else
-      {
-         free(New);
-      }
-   }
+  
    
    return list;
 }
