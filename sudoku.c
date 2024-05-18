@@ -181,29 +181,35 @@ Si terminó de recorre el grafo sin encontrar una solución, retorne NULL.
 */
 Node* DFS(Node* initial, int* cont)
 {
-   Stack *pila = createStack();
-   push(pila, initial);
-   List *Lista = createList();
-   *cont = 1;
-   Node *aux = createNode();
-   for (aux = top(pila) ; top(pila) != NULL; aux = top(pila)) 
+   Stack* stack = createStack();
+   push(stack, initial);
+
+   while (!is_empty(stack))
    {
-      
-      cont++;
-      Lista = get_adj_nodes(aux);
-      if (Lista == NULL)
+      Node* current = (Node*)top(stack);
+      pop(stack);
+
+      (*cont)++;
+
+      if (is_final(current))
       {
-         return NULL;
+         clean(stack);
+         return current;
       }
-      first(Lista);
-      for (int i = 0; i < get_size(Lista); i++)
-         {
-            push(pila,front(Lista));
-         }
-     }
-     free(pila);
-     free(Lista);
-     return NULL;
+
+      List* adj_nodes = get_adj_nodes(current);
+      while (!is_empty(adj_nodes))
+      {
+         Node* adj_node = (Node*)front(adj_nodes);
+         popFront(adj_nodes);
+
+         push(stack, adj_node);
+      }
+      clean(adj_nodes);
+
+      free(current);
+   }
+   return NULL;
 }
 
 
