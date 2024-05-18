@@ -187,10 +187,7 @@ Node* DFS(Node* initial, int* cont)
    *cont = 1;
    for (Node *aux; top(pila) != NULL; aux = top(pila)) 
    {
-      if (is_final(aux) == 1 && aux != NULL)
-      {
-         return aux;
-      }
+      
       cont++;
       Lista = get_adj_nodes(aux);
       if (Lista == NULL)

@@ -281,3 +281,14 @@ sudoku.c:190:30: error: ‘aux’ may be used uninitialized in this function [-W
 cc1: all warnings being treated as errors
 Compilation failed
 e476574
+Sat 18 May 2024 12:41:01 AM UTC: 
+ sudoku.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘DFS’:
+sudoku.c:192:15: error: ‘aux’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+  192 |       Lista = get_adj_nodes(aux);
+      |               ^~~~~~~~~~~~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+e5d0ce9
