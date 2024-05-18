@@ -140,12 +140,63 @@ List* get_adj_nodes(Node* n)
 //4.Implemente la función int is_final(Node * n). Esta función retorna 1 si el nodo corresponde a un nodo final (es decir, todos los valores de la matriz son distintos a 0) y 0 en caso contrario.
 int is_final(Node* n)
 {
-    return 0;
+   int i,j;
+   for(i = 0 ; i < 8 ; i++)
+   {
+      for(j = 0 ; j < 8 ; j++)
+      {
+         if (n->sudo[i][j] == 0)
+         {
+             return 0;
+         }
+      }
+   }
+    return 1;
 }
 
+/*
+5.Implemente la función Node* DFS(Node* n, int* cont). Esta función realiza una búsqueda en profundidad a partir del nodo n. El algoritmo es el siguiente:
+
+Cree un stack S (pila) e inserte el nodo.
+
+Mientras el stack S no se encuentre vacío:
+
+a) Saque y elimine el primer nodo de S.
+
+b) Verifique si corresponde a un estado final, si es así retorne el nodo.
+
+c) Obtenga la lista de nodos adyacentes al nodo.
+
+d) Agregue los nodos de la lista (uno por uno) al stack S.
+
+e) Libere la memoria usada por el nodo.
+
+Si terminó de recorre el grafo sin encontrar una solución, retorne NULL.
+*/
 Node* DFS(Node* initial, int* cont)
 {
-  return NULL;
+   Stack* stack = createStack();
+   push(stack, initial);
+
+   while(!is_empty(stack))
+      {
+         Node* nodo = top(stack);
+         pop(stack);
+
+         if(is_final(nodo) == 1)
+         {
+            return nodo;
+         }
+         List* adj = get_adj_nodes(nodo);
+         Node* aux = first(adj);
+         while(aux)
+         {
+            push(stack, aux);
+            aux = next(adj);
+         }
+         free(nodo);
+      }
+   return NULL;
 }
 
 
