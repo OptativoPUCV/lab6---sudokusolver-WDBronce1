@@ -117,32 +117,30 @@ int is_valid(Node* n)
 //3.Modifique la función get_adj_nodes para que sólo los nodos válidos sean retornados (use la función is_valid).
 List* get_adj_nodes(Node* n)
 {
-   List* list=createList();
+   List* list = createList();
    int k,j;
-   for(k = 0 ; k < 8 ; k++)
+   for(k = 0 ; k < 9 ; k++)
    {   
-      for(j = 0 ; j < 8 ; j++)
+      for(j = 0 ; j < 9 ; j++)
       {
          if (n->sudo[k][j] == 0)
          {
-             for(int i = 1 ; i < 10 ; i++)
+            for(int i = 1 ; i < 10 ; i++)
+            {
+               Node *New = copy(n);
+               New->sudo[k][j] = i;
+               if(is_valid(New) == 1)
                {
-                  Node *New = copy(n);
-                  New->sudo[k][j] = i;
-                  if(is_valid(New) == 1)
-                  {
-                     pushBack(list, New);
-                  }
-                  else
-                  {
-                     free(New);
-                  }
+                  pushBack(list, New);
                }
+               else
+               {
+                  free(New);
+               }
+            }
          }
       }
    }
-  
-   
    return list;
 }
 
