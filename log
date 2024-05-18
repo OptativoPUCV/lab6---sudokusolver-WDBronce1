@@ -270,3 +270,14 @@ sudoku.c:190:11: error: ‘aux’ may be used uninitialized in this function [-W
 cc1: all warnings being treated as errors
 Compilation failed
 0064646
+Sat 18 May 2024 12:40:45 AM UTC: 
+ sudoku.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:5:
+sudoku.c: In function ‘DFS’:
+sudoku.c:190:30: error: ‘aux’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+  190 |       if (is_final(aux) == 1 && aux != NULL)
+      |                              ^
+cc1: all warnings being treated as errors
+Compilation failed
+e476574

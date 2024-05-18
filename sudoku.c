@@ -184,10 +184,10 @@ Node* DFS(Node* initial, int* cont)
    Stack *pila = createStack();
    push(pila, initial);
    List *Lista = createList();
-   *cont=1;
+   *cont = 1;
    for (Node *aux; top(pila) != NULL; aux = top(pila)) 
    {
-      if (is_final(aux))
+      if (is_final(aux) == 1 && aux != NULL)
       {
          return aux;
       }
