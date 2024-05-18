@@ -60,47 +60,65 @@ No se repitan números en las columnas
 No se repitan números en las submatrices de 3x3
 Si el estado es válido la función retorna 1, si no lo es retorna 0.
 */
-int is_valid(Node* n)
-{  
-   int num;
-   for (int x = 0 ; x < 8 ; x++)
-   {
-      for (int y = 0 ; y < 8 ; y++)
-      {
-         if (n->sudo[x][y] != 0)
-         {
-            num = n->sudo[x][y];
+int is_valid(Node *n) {
+  int nRep[10];
+  int i, j, k, a, b;
 
-            for (int i = 0 ; i < 8 ; i++)
-               {
-                  if (n->sudo[x][i] == num)
-                  {
-                     return 0;
-                  }
-               }
-               for (int k = 0 ; k < 9 ; k++)
-               {
-                  int i = 3 * (num/3) + (k/3);
-                  int j = 3 * (num%3) + (k%3);
-                  if (n->sudo[i][j] == num)
-                  {
-                     return 0;
-                  }
-               }
+  // Inicializar nRep[a] -> 0
+  for (a = 0; a < 10; a++)
+    nRep[a] = 0;
 
-         }
-         else
-         {
-            continue;
-         }
-         
-            
+  // Validar filas
+  for (i = 0; i < 9; i++) {
+    for (j = 0; j < 9; j++) {
+      nRep[n->sudo[i][j]]++;
+    }
+
+    for (k = 1; k < 10; k++) {
+      if (nRep[k] > 1)
+        return 0;
+    }
+
+    for (a = 0; a < 10; a++) {
+      nRep[a] = 0;
+    }
+  }
+
+  // Validar columnas
+  for (i = 0; i < 9; i++) {
+    for (j = 0; j < 9; j++) {
+      nRep[n->sudo[j][i]]++; // lol
+    }
+
+    for (k = 1; k < 10; k++) {
+      if (nRep[k] > 1)
+        return 0;
+    }
+
+    for (a = 0; a < 10; a++) {
+      nRep[a] = 0;
+    }
+  }
+
+  for (k = 0; k < 9; k++) {
+    for (b = 0; b < 9; b++) {
+      i = 3 * (k / 3) + (b / 3);
+      j = 3 * (k % 3) + (b % 3);
+      nRep[n->sudo[i][j]]++;
+    }
+
+    for (i = 1; i < 10; i++) {
+      if (nRep[i] > 1) {
+        return 0;
       }
-   }
-   
-   
-   
-   return 1;
+
+      for (a = 0; a < 10; a++) {
+        nRep[a] = 0;
+      }
+    }
+  }
+
+  return 1;
 }
 
 //1.Cree una función que a partir de un nodo genere una lista con los nodos adyacentes
@@ -175,13 +193,13 @@ Si terminó de recorre el grafo sin encontrar una solución, retorne NULL.
 */
 Node* DFS(Node* initial, int* cont)
 {
-   Stack* stack = createStack();
-   push(stack, initial);
+   Stack* pila = createStack();
+   push(pila, initial);
 
-   while(!is_empty(stack))
+   while(!is_empty(pila))
       {
-         Node* nodo = top(stack);
-         pop(stack);
+         Node* nodo = top(pila);
+         pop(pila);
 
          if(is_final(nodo) == 1)
          {
@@ -191,7 +209,7 @@ Node* DFS(Node* initial, int* cont)
          Node* aux = first(adj);
          while(aux)
          {
-            push(stack, aux);
+            push(pila, aux);
             aux = next(adj);
          }
          free(nodo);
