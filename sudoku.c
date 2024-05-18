@@ -138,6 +138,7 @@ Si terminó de recorre el grafo sin encontrar una solución, retorne NULL.
 */
 Node* DFS(Node* initial, int* cont)
 {
+   /*
    Stack* pila = createStack();
    push(pila, initial);
 
@@ -159,7 +160,32 @@ Node* DFS(Node* initial, int* cont)
          }
          free(nodo);
       }
-   return NULL;
+   return NULL;*/
+   Stack* stack = createStack();
+     push(stack, initial);
+
+     while (!is_empty(stack)){
+       Node* current = (Node*)top(stack);
+       pop(stack);
+
+       (*cont)++;
+
+       if (is_final(current)){
+         clean(stack);
+         return current;
+       }
+
+       List* adj_nodes = get_adj_nodes(current);
+       while (!is_empty(adj_nodes)){
+         Node* adj_node = (Node*)front(adj_nodes);
+         popFront(adj_nodes);
+
+         push(stack, adj_node);
+       }
+       clean(adj_nodes);
+
+       free(current);
+     }
 }
 
 
